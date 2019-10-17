@@ -1,4 +1,5 @@
 class Question < ApplicationRecord
+  has_many(:answers, dependent: :destroy)
   # This is the  Question model
   # We generated this file with the command:
   # rails g model question title:string body:text

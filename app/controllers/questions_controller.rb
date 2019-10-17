@@ -33,6 +33,10 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    # For the 'form_with' helper
+    @answer = Answer.new
+    # For the list of answers
+    @answers = @question.answers.order(created_at: :desc)
   end
 
   def index

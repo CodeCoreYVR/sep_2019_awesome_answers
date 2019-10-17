@@ -40,5 +40,13 @@ Rails.application.routes.draw do
   # delete '/questions/:id', {to: 'questions#destroy'}
 
   # this builds all of the above routes for us ;)
-   resources :questions
+  
+  #routes written inside of a block passed
+  #to a 'resources' method will be pre-fixed by a path
+  #corresponding to the passed in symbol
+  #for example here we see that all nested routes will be
+  #prefixed with '/questions/:question_id'
+   resources :questions do
+    resources :answers, only: [:create, :destroy]
+   end
 end

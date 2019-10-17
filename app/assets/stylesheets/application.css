@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ ul.answer-list {
+    list-style: none;
+    padding-left: 0;
+ }
