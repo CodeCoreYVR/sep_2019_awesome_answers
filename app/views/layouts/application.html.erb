@@ -10,11 +10,17 @@
   </head>
 
   <body>
+  <%= flash[:notice] || flash[:alert] %> 
     <nav>
       <!-- <a href="/">Home</a>   -->
       <%= link_to "Home", root_path %>
       |
       <%= link_to "Contact Us", contacts_new_path %>
+      |
+      <%= link_to 'New Question', new_question_path %>
+      |
+      <%= link_to 'All Questions', questions_path %>
+    <hr>
 
 
     </nav>
