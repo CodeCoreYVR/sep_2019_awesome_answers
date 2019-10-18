@@ -1,5 +1,8 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_question, only: [:show, :edit, :update, :destroy]
+  
+  
   def new
     @question = Question.new
   end
@@ -22,6 +25,7 @@ class QuestionsController < ApplicationController
     # Then use permit to specify all input names that
     # are allowable (as symbols).
     @question = Question.new question_params
+    @question.user = current_user
     if @question.save
       flash[:notice] = "Question created successfully"
       # if question is saved successfully redirect to question show page

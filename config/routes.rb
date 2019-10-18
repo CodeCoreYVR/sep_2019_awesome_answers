@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'sessions/create'
   get 'questions/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -49,4 +51,12 @@ Rails.application.routes.draw do
    resources :questions do
     resources :answers, only: [:create, :destroy]
    end
+
+   resources :users, only: [:new, :create]
+
+   resource :session, only: [:new, :create, :destroy]
+
+   #resources :sessions vs resource :session
+   #resourc is singular and unlike 'resources' 'resource' will create routes that do CRUD operation on only one thing. There will be no index routes and no route will have a ':id' wild card.  When using a singular resource, the controller must still be PLURAL
+
 end

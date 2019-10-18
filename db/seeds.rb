@@ -26,3 +26,32 @@ end
 question = Question.all
 
 puts Cowsay.say("Gnerated #{Question.count} questions", :dragon)
+
+# PASSWORD = "supersecret"
+# Answer.delete.all
+# Question.delete.all
+# User.delete.all 
+
+# super_user = User.create(
+#   first_name: "Ham",
+#   last_name: "Burger",
+#   email: "shaft@hushyomouf.daddy",
+#   password: PASSWORD
+# )
+# 10.times do
+#   first_name = Faker::Name.first_name 
+#   last_name = Faker::Name.last_name
+#   User.create(
+#     first_name: first_name,
+#     last_name: last_name,
+#     email: "#{first_name.downcase}.#{last_name.downcase}@example.com",
+#     password: PASSWORD
+#   )
+# end
+
+# users = User.all
+# puts Cowsay.say("Created #{users.count}, users", :tux)
+
+# user: users.sample 
+
+# puts "Login with #{super_user.emai} and password of '#{PASSWORD}'"
