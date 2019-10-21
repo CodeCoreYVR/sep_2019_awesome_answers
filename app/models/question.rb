@@ -1,6 +1,10 @@
 class Question < ApplicationRecord
   has_many(:answers, dependent: :destroy)
   belongs_to :user
+  # belongs_to :user adds a presence validation on the
+  # association. i.e.
+  # validates :user_id, presence: true
+  
   # This is the  Question model
   # We generated this file with the command:
   # rails g model question title:string body:text
