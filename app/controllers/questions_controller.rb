@@ -1,8 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_question, only: [:show, :edit, :update, :destroy]
-  
-  
+  before_action :authorize!, only: [:edit, :update, :destroy]
+
+
   def new
     @question = Question.new
   end
@@ -30,7 +31,7 @@ class QuestionsController < ApplicationController
       flash[:notice] = "Question created successfully"
       # if question is saved successfully redirect to question show page
       redirect_to question_path(@question)
-    else 
+    else
       # render views/questions/new.html.erb
       render :new
     end
@@ -48,6 +49,9 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    # unless can?(:crud, @question)
+    #   redirect_to root_path, alert: 'Not Authorized'
+    # end
   end
 
   def update
@@ -76,5 +80,9 @@ class QuestionsController < ApplicationController
   def find_question
     # get the current value inside of the db
     @question = Question.find params[:id]
+  end
+
+  def authorize!
+    redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @question)
   end
 end

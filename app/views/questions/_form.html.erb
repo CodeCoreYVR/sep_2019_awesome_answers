@@ -1,6 +1,6 @@
-<%#
-  To create a form for a resource (i.e. a model), use
-  the form_wth helper instead of formm_tag. Its usual
+
+  <%#= To create a form for a resource (i.e. a model), use
+  the form_wth helper instead of form_tag. Its usual
   arguments are:
   - A named argument 'model' which is assigned an
   instance of a model (i.e. a new question)
@@ -12,7 +12,7 @@
     All data from the input fields a form built with this will have its name-value nested in a hash named
    after the class of the passed in model
    (e.g. <input type="text" name="question[title]" id="question_title"> => { "question": { "title": "What?"} })
-%>
+   %>
 
 <% if @question.errors.any? %>
   <ul>
@@ -32,5 +32,5 @@
     <%= f.label :body %>
     <%= f.text_field :body %>
   </div>
-  <%= f.submit %>
-<% end %> 
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

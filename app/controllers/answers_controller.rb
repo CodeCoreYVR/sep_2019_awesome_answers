@@ -14,14 +14,17 @@ class AnswersController < ApplicationController
           render 'questions/show'
         end
       end
-    
+
       def destroy
         @answer = Answer.find params[:id]
-        @answer.destroy
-        redirect_to question_path(@answer.question)
-    
+        if can? :crud, @answer
+          @answer.destroy
+          redirect_to question_path(@answer.question)
+        else
+          redirect_to root_path, alert: 'Not authorized'
+        end
       end
-    
+
     private
     def answer_params
       params.require(:answer).permit(:body)
