@@ -34,6 +34,7 @@ group :development, :test do
   gem 'cowsay'
   gem 'faker'
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
