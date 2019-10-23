@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
  # question new page
   # when someone requests /questions/new it will be handled by the NEW method
-  # inside of questions controller 
+  # inside of questions controller
   # get '/questions/new', {to: 'questions#new', as: :new_question}
   # get '/questions/:id', {to: 'questions#show', as: :question }
 
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   # delete '/questions/:id', {to: 'questions#destroy'}
 
   # this builds all of the above routes for us ;)
-  
+
   #routes written inside of a block passed
   #to a 'resources' method will be pre-fixed by a path
   #corresponding to the passed in symbol
@@ -55,6 +55,8 @@ Rails.application.routes.draw do
    resources :users, only: [:new, :create]
 
    resource :session, only: [:new, :create, :destroy]
+
+   resources :job_posts, only: [:new, :create, :show, :destroy, :index]
 
    #resources :sessions vs resource :session
    #resourc is singular and unlike 'resources' 'resource' will create routes that do CRUD operation on only one thing. There will be no index routes and no route will have a ':id' wild card.  When using a singular resource, the controller must still be PLURAL
