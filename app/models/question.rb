@@ -4,7 +4,14 @@ class Question < ApplicationRecord
   # belongs_to :user adds a presence validation on the
   # association. i.e.
   # validates :user_id, presence: true
-  
+  has_many :likes, dependent: :destroy
+  # The `has_many` below depends on the existence of
+  # `has_many :likes` above.
+  # If the one above doesn't exist, you will get an error. (Or
+  # if the one above comes after).
+  has_many :likers, through: :likes, source: :user
+
+
   # This is the  Question model
   # We generated this file with the command:
   # rails g model question title:string body:text

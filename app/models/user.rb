@@ -2,6 +2,15 @@ class User < ApplicationRecord
     has_many :questions, dependent: :nullify
     has_many :answers, dependent: :nullify
     has_many :job_posts, dependent: :nullify
+    has_many :likes, dependent: :destroy
+    # If you were to use has_many :questions then you will have two
+    # `has_many :questions` and one will override the other.
+    # To fix this we can give the association a different name
+    # and specify the source option so that Rails will be able
+    # to figure out the other end of the association.
+    # Note: `source:` has to match a belongs_to association in
+    # the join model (`like` in this case).
+    has_many :liked_questions, through: :likes, source: :question
 
     has_secure_password
     # Provides user authentication features on the model

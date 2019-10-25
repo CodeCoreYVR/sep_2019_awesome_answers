@@ -6,10 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 PASSWORD = "supersecret"
+NUM_QUESTIONS = 100
+
+Like.delete_all
 Answer.delete_all
 Question.delete_all
 User.delete_all
-
 
 super_user = User.create(
   first_name: "Ham",
@@ -31,7 +33,7 @@ end
 
 users = User.all
 
-200.times do
+NUM_QUESTIONS.times do
   created_at = Faker::Date.backward(days: 365)
   q = Question.create(
     # Faker is a ruby module. We access classes or
@@ -52,11 +54,13 @@ users = User.all
         user: users.sample
       )
     end
+    q.likers = users.shuffle.slice(0, rand(users.count))
   end
 end
 
 question = Question.all
 
+puts Cowsay.say("Created #{Like.count}, likes", :ghostbusters)
 puts Cowsay.say("Generated #{Question.count} questions", :dragon)
 puts Cowsay.say("Generated #{Answer.count} answers", :cow)
 puts Cowsay.say("Created #{users.count}, users", :tux)

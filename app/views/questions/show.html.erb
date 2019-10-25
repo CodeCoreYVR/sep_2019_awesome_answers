@@ -4,9 +4,22 @@
 <h4>Created by: <%= @question.user.full_name  || 'DELETED'%></h4>
 
 <% if can?(:crud, @question) %>
+<div>
   <%= link_to "Edit", edit_question_path(@question)%>
   <%= link_to "Delete", question_path(@question), method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
 <% end %>
+
+<div>
+  <% if @like.present? && can?(:destroy, @like) %>
+    <%= link_to "Unlike", like_path(@like), method: :delete %>
+  <% elsif can?(:like, @question)%>
+    <%= link_to "Like", question_likes_path(@question), method: :post %>
+  <% end %>
+  <small>
+    <%= pluralize(@question.likes.count, "like") %>
+  </small>
+</div>
 
 <%= form_with(model: [@question, @answer], local: true) do |f| %>
 <% if @answer.errors.any? %>

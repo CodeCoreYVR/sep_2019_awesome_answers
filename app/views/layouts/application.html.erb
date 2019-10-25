@@ -11,7 +11,12 @@
   </head>
 
   <body>
-  <%= flash[:notice] || flash[:alert] %>
+    <% flash.each do |type, message| %>
+      <div class="flash flash-<%= type %>">
+        <%= message %>
+      </div>
+    <% end %>
+    <%#= flash[:notice] || flash[:alert] %>
     <nav>
       <% if user_signed_in?%>
         Hello <%= current_user.full_name %>,
@@ -29,6 +34,8 @@
       <%= link_to 'New Question', new_question_path %>
       |
       <%= link_to 'All Questions', questions_path %>
+      |
+      <%= link_to 'Liked Questions', liked_questions_path %>
     <hr>
 
 

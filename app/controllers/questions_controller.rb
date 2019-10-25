@@ -42,6 +42,7 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
     # For the list of answers
     @answers = @question.answers.order(created_at: :desc)
+    @like = @question.likes.find_by(user: current_user)
   end
 
   def index
@@ -67,6 +68,10 @@ class QuestionsController < ApplicationController
     flash[:notice] = "Question destoryed!"
     @question.destroy
     redirect_to questions_path
+  end
+
+  def liked
+    @questions = current_user.liked_questions.order('likes.created_at DESC')
   end
 
   private

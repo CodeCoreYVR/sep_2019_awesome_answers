@@ -50,6 +50,27 @@ Rails.application.routes.draw do
   #prefixed with '/questions/:question_id'
    resources :questions do
     resources :answers, only: [:create, :destroy]
+    resources :likes, shallow: true, only: [ :create, :destroy ]
+    # The `shallow: true` named argument will separate routes
+    # that require the parent from those that don't. Routes
+    # that require the parent (i.e. index, new & create) will
+    # not change
+    # Roytes that don't require the parent (i.e. show, edit, update
+    # destroy ) will have the parent prefix
+    # (i.e. /question/:question_id/) removed
+
+    # Use the 'on' named argument to specify how a
+    # nested route behaves relative to its parent.
+
+    # `on: :collection` means that it acts on the entire
+    # resource. All questions in this case. new and create
+    # act on the collection
+
+    # `on: :member` means that it acts on a single resource.
+    # A signle question in this case. edit, destroy, show and update
+    # are all member routes
+    get :liked, on: :collection
+
    end
 
    resources :users, only: [:new, :create]
