@@ -43,10 +43,7 @@ RSpec.describe JobPost, type: :model do
       # GIVEN
       # One job post in the db and an instance of job post
       # with the same title
-      persisted_jp = JobPost.create(
-        title: "Imagination Engineer",
-        min_salary: 100_000
-      )
+      persisted_jp = FactoryBot.create(:job_post)
       jp = JobPost.new title: persisted_jp.title
       # WHEN
       # validations triggered
@@ -72,17 +69,17 @@ RSpec.describe JobPost, type: :model do
     it "should return job posts containing the search term" do
       # GIVEN
       # 3 job posts in the db
-      job_post_a = JobPost.create(
+      job_post_a = FactoryBot.create(:job_post,
         title: "Software Engineer",
         description: "Best Job",
         min_salary: 40_000
       )
-      job_post_b = JobPost.create(
-        title: "Programmer",
+      job_post_b = FactoryBot.create(:job_post,
+        title: "Awesome Programmer",
         description: "Best software",
         min_salary: 50_000
       )
-      job_post_c = JobPost.create(
+      job_post_c = FactoryBot.create(:job_post,
         title: "Programmer",
         description: "Build awesome stuff",
         min_salary: 50_000

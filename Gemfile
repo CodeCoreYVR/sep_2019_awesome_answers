@@ -37,6 +37,7 @@ group :development, :test do
   gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-maintenance'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
+  gem 'nyan-cat-formatter'
 end
 
 group :development do
