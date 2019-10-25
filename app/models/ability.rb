@@ -62,6 +62,9 @@ class Ability
     end
     # Can also write abilities like:
     # can :manage, Question, user_id: user.id
+    can(:crud, JobPost) do |job_post|
+      job_post.user == user
+    end
 
   end
 end

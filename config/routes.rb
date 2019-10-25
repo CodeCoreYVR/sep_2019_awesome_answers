@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 
    resource :session, only: [:new, :create, :destroy]
 
-   resources :job_posts, only: [:new, :create, :show, :destroy, :index]
+   resources :job_posts
 
    #resources :sessions vs resource :session
    #resourc is singular and unlike 'resources' 'resource' will create routes that do CRUD operation on only one thing. There will be no index routes and no route will have a ':id' wild card.  When using a singular resource, the controller must still be PLURAL
