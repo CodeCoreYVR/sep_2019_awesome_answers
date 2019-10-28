@@ -1,3 +1,7 @@
-<h1>All Question</h1>
+<% if @tag.present? %>
+  <h2>Showing questions tagged by: <span class="badge badge-pill badge-primary"><%= @tag.name %></span></h2>
+<% else %>
+  <h2>All Questions</h2>
+<% end %>
 
 <%= render 'list' %>

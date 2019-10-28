@@ -2,13 +2,19 @@
 <p><%= @question.body %></p>
 <p><%= @question.created_at %></p>
 <h4>Created by: <%= @question.user.full_name  || 'DELETED'%></h4>
+<% unless @question.tags.empty? %>
 <p>
-  Tags: <%= @question.tags.map(&:name).join(", ") %>
+  Tags:
+  <% @question.tags.each do |tag|  %>
+    <%= link_to(tag.name, questions_path(tag: tag.name), class: "badge badge-pill badge-primary")  %>
+  <% end %>
+  <%#= @question.tags.map(&:name).join(", ") %>
   <%#=
     Equivalent to:
     @question.tags.map { |t| t.name }.join(", ")
     %>
 </p>
+<% end %>
 
 <% if can?(:crud, @question) %>
 <div>
