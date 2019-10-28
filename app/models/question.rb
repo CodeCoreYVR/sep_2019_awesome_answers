@@ -10,6 +10,11 @@ class Question < ApplicationRecord
   # If the one above doesn't exist, you will get an error. (Or
   # if the one above comes after).
   has_many :likers, through: :likes, source: :user
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings#, source: :tag
+  # If the name of the association (i.e. tags) is the same as the
+  # source singularized (i.e. tag), then the `source:` named
+  # argument can be omitted.
 
 
   # This is the  Question model

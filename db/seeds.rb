@@ -7,8 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 PASSWORD = "supersecret"
 NUM_QUESTIONS = 100
+NUM_TAGS = 20
 
 Like.delete_all
+Tagging.delete_all
+Tag.delete_all
 Answer.delete_all
 Question.delete_all
 User.delete_all
@@ -33,6 +36,14 @@ end
 
 users = User.all
 
+NUM_TAGS.times do
+  Tag.create(
+    name: Faker::Game.genre
+  )
+end
+
+tags = Tag.all
+
 NUM_QUESTIONS.times do
   created_at = Faker::Date.backward(days: 365)
   q = Question.create(
@@ -55,12 +66,14 @@ NUM_QUESTIONS.times do
       )
     end
     q.likers = users.shuffle.slice(0, rand(users.count))
+    q.tags = tags.shuffle.slice(0, rand(tags.count))
   end
 end
 
 question = Question.all
 
 puts Cowsay.say("Created #{Like.count}, likes", :ghostbusters)
+puts Cowsay.say("Created #{Tag.count}, tags", :kitty)
 puts Cowsay.say("Generated #{Question.count} questions", :dragon)
 puts Cowsay.say("Generated #{Answer.count} answers", :cow)
 puts Cowsay.say("Created #{users.count}, users", :tux)

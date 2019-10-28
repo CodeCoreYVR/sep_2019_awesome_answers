@@ -2,6 +2,13 @@
 <p><%= @question.body %></p>
 <p><%= @question.created_at %></p>
 <h4>Created by: <%= @question.user.full_name  || 'DELETED'%></h4>
+<p>
+  Tags: <%= @question.tags.map(&:name).join(", ") %>
+  <%#=
+    Equivalent to:
+    @question.tags.map { |t| t.name }.join(", ")
+    %>
+</p>
 
 <% if can?(:crud, @question) %>
 <div>
