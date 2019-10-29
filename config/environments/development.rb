@@ -28,6 +28,17 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  #for letter opener
+
+  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :letter_opener
+  #the perform deliveries line determines whether deliveries are actually carried out when the deliver method is invoked on the Mail message. By default they are, but this can be turned off to help functional testing
+  config.action_mailer.perform_deliveries = true
+  #the above setting should be set to 'true' otherwise all of your mail will fail silently. If your mamil is not properly set up with Google, you will not know about it.
+  config.action_mailer.default_url_options = {
+    host: "localhost:3000"
+  }
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 

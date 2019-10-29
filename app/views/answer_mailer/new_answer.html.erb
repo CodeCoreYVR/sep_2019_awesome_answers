@@ -1,0 +1,32 @@
+<%# email content can't contain CSS files or javascript files. 
+javascript will not be executed. However you can still write CSS as long as 
+it's contained inside a <style></style> tag or it's written as inline styles.
+HTML/CSS support varies greatly across the huge world of mail clients.
+You are limited in the features you can use. 
+https://campaignmonitor.com/css
+%>
+
+<h2>Hi, <%= @question_owner.full_name %></h2>
+
+<p>
+<%= @answer.user.full_name %> answered your question titled </br>
+<q><%= @question.title %></q>
+</p>
+
+<p>
+The Answer is: </br>
+<q><%= @answer.body %></q>
+</p>
+
+<%= link_to(
+    "Click here to view your question",question_url(@question.id)
+)%>
+
+<p>
+Cheers, </br>
+Awesome Answers Team
+</p>
+
+<%# text vs html = rails doesn't force you to use both, but if you provide HTML, you should provide text %>
+
+
