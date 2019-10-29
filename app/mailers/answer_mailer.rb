@@ -11,6 +11,7 @@ class AnswerMailer < ApplicationMailer
     #AnswerMailer.hello_world.deliver_now
 
     def hello_world
+        HelloWorld.set(wait: 10.minutes).perform_later
         mail(
             to: "kahlil.ashanti@gmail.com",
             from: "info@awesome-answer.io",

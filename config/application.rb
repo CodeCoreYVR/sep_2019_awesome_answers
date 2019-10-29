@@ -23,6 +23,10 @@ module Sep2019AwesomeAnswers
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    #this configures ActiveJob to use DelayedJob
+    #this tells Rails' ActiveJob to use the gem 'delayed_job'
+    #to manage our job queue which will use a table in our database
+    config.active_job.queue_adapter = :delayed_job
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

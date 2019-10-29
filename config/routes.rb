@@ -82,4 +82,12 @@ Rails.application.routes.draw do
    #resources :sessions vs resource :session
    #resourc is singular and unlike 'resources' 'resource' will create routes that do CRUD operation on only one thing. There will be no index routes and no route will have a ':id' wild card.  When using a singular resource, the controller must still be PLURAL
 
+   #routes for delayed job, when generating delayed job be sure to stop the Spring server in terminal by typing 'Spring stop'
+   #to generate a delayed job from your terminal use rails g delayed_job:active_record
+   match(
+     "/delayed_job",
+     to: DelayedJobWeb,
+     anchor: false,
+     via: [:get, :post]
+   )
 end
