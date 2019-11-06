@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'questions/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # The option 'defaults: { format: :json }' will set `json` as the default response
+  # format for all routes contained within the block of the namespace.
+  # The namespace method in Rails routes makes it so it will automatically
+   # look in a directory api, then in a subdirectory v1 for QuestionsController
+  namespace :api, defaults: { format: :json } do
+    # /api...
+    namespace :v1 do
+      # /api/v1...
+      resources :questions
+      # /api/v1/questions
+      resource :session, only: [:create, :destroy]
+    end
+  end
 
   # This defines a `route` rule that says when
    # we receive a `GET` request with URL `/`

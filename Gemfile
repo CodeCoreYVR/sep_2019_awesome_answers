@@ -27,6 +27,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cancancan'
 gem 'bootstrap', '~>4.3.1'
+gem 'active_model_serializers'
+gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.4'
+gem 'delayed_job_web'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,8 +52,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener', '~> 1.7'
   gem 'actionmailer'
-  gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.4'
-  gem 'delayed_job_web'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
