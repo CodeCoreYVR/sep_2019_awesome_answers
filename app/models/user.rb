@@ -11,6 +11,7 @@ class User < ApplicationRecord
     # Note: `source:` has to match a belongs_to association in
     # the join model (`like` in this case).
     has_many :liked_questions, through: :likes, source: :question
+    has_one_attached :image
 
     has_secure_password
     # Provides user authentication features on the model

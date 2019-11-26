@@ -15,6 +15,9 @@ class Question < ApplicationRecord
   # If the name of the association (i.e. tags) is the same as the
   # source singularized (i.e. tag), then the `source:` named
   # argument can be omitted.
+  #  We don't actually need to add an image field to the model with
+  # Active Storage
+  has_one_attached :image
 
 
   # This is the  Question model
@@ -111,7 +114,7 @@ class Question < ApplicationRecord
       # initializes a record (Tag.new) with the attributes
       # if one is not found.
       Tag.find_or_initialize_by(name: tag_name)
-      # If a tag with name tag_name is not found, 
+      # If a tag with name tag_name is not found,
       # it will call Tag.new(name: tag_name)
     end
   end
