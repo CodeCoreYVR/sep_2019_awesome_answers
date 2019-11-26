@@ -8,10 +8,12 @@ require("@rails/activestorage").start()
 require("channels")
 
 import "bootstrap";
+import "underscore";
 import "../stylesheets/application";
 import "./questions";
 import "./selectize";
 
+import Gmaps from "./gmaps_google";
 window.jQuery = $;
 window.$ = $;
 

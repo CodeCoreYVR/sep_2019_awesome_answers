@@ -5,7 +5,18 @@ environment.plugins.append(
 new webpack.ProvidePlugin({
 $: "jquery",
 jQuery: "jquery",
-Popper: ["popper.js", "default"]
+Popper: ["popper.js", "default"],
+_: 'underscore'
 })
 );
 module.exports = environment;
+
+environment.loaders.append('gmaps4rails', {
+  test: /gmaps_google/,
+  use: [
+    {
+      loader: 'imports-loader',
+      options: 'this=>window'
+    }
+  ]
+});

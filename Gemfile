@@ -32,6 +32,9 @@ gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.4'
 gem 'delayed_job_web'
 gem 'mini_magick', '~> 4.8'
 gem "aws-sdk-s3", require: false
+gem "geocoder"
+gem "gmaps4rails"
+gem 'underscore-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
