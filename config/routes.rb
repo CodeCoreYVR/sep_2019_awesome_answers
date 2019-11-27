@@ -88,6 +88,13 @@ Rails.application.routes.draw do
 
    resource :session, only: [:new, :create, :destroy]
 
+   get "/auth/github", as: :sign_in_with_github
+   get "/auth/:provider/callback", to: "callbacks#index"
+   # get "/auth/github/callback", to: "callbacks#index"
+   # get "/auth/facebook/callback", to: "callbacks#index"
+   # get "/auth/twitter/callback", to: "callbacks#index"
+
+
    resources :job_posts
 
    #resources :sessions vs resource :session

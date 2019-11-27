@@ -33,7 +33,9 @@
         data: {confirm: "Are you sure you want to log out?"}%>
       <%else%>
         <%= link_to "Login", new_session_path %> |
-        <%= link_to "Sign Up", new_user_path %>
+        <%= link_to "Sign Up", new_user_path %> |
+        <%= link_to "Sign In With Github", sign_in_with_github_path %>
+
       <% end %>
       |
       <%= link_to "Home", root_path %>
