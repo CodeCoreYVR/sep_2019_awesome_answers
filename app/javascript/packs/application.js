@@ -12,6 +12,7 @@ import "underscore";
 import "../stylesheets/application";
 import "./questions";
 import "./selectize";
+import "./payments";
 
 import Gmaps from "./gmaps_google";
 window.jQuery = $;

@@ -1,5 +1,7 @@
 <h1><%= @user.full_name %>'s profile</h1>
 
+<%= link_to 'Gift User', new_user_gift_path(@user) %>
+
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>

@@ -1,4 +1,5 @@
-const { environment } = require('@rails/webpacker')
+const { environment } = require('@rails/webpacker');
+const erb =  require('./loaders/erb');
 const webpack = require("webpack");
 environment.plugins.append(
 "Provide",
@@ -9,6 +10,7 @@ Popper: ["popper.js", "default"],
 _: 'underscore'
 })
 );
+environment.loaders.prepend('erb', erb)
 module.exports = environment;
 
 environment.loaders.append('gmaps4rails', {

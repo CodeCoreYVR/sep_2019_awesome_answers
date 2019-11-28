@@ -11,6 +11,8 @@ class User < ApplicationRecord
     # Note: `source:` has to match a belongs_to association in
     # the join model (`like` in this case).
     has_many :liked_questions, through: :likes, source: :question
+    has_many :sent_gifts, class_name: "User", foreign_key: :sender_id, dependent: :nullify
+    has_many :received_gifts, class_name: "User", foreign_key: :reciever_id, dependent: :nullify
     has_one_attached :image
 
     has_secure_password

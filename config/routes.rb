@@ -82,10 +82,13 @@ Rails.application.routes.draw do
     # are all member routes
     get :liked, on: :collection
     resources :publishings, only: :create
-
    end
 
-   resources :users, only: [:new, :create, :show]
+   resources :users, shallow: true, only: [:new, :create, :show] do
+     resources :gifts, only: [:new, :create] do
+       resources :payments, only: [:new, :create]
+     end
+   end
 
    resource :session, only: [:new, :create, :destroy]
 

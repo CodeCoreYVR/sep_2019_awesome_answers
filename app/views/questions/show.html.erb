@@ -2,7 +2,7 @@
 <%= image_tag @question.image.variant(resize: '500X500') if @question.image.attached? %>
 <p><%= @question.body %></p>
 <p><%= @question.created_at %></p>
-<h4>Created by: <%= @question.user.full_name  || 'DELETED'%></h4>
+<h4>Asked by: <%= link_to @question.user.full_name  || 'DELETED', @question.user %></h4>
 <% unless @question.tags.empty? %>
 <p>
   Tags:
