@@ -74,5 +74,10 @@ class Ability
       user.persisted? && user != question.user
     end
 
+    can(:publish, Question) do |question|
+      question.user == user
+    end
+
+
   end
 end

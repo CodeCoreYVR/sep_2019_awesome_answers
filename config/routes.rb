@@ -81,6 +81,7 @@ Rails.application.routes.draw do
     # A signle question in this case. edit, destroy, show and update
     # are all member routes
     get :liked, on: :collection
+    resources :publishings, only: :create
 
    end
 
